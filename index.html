@@ -33,6 +33,18 @@
   <body>
     <a class="skip-link" href="#main">Перейти к содержимому</a>
 
+    <aside class="scroll-ladder" aria-hidden="true">
+      <div class="scroll-ladder__rail"></div>
+      <div class="scroll-ladder__step" style="top: 0%"></div>
+      <div class="scroll-ladder__step" style="top: 16%"></div>
+      <div class="scroll-ladder__step" style="top: 32%"></div>
+      <div class="scroll-ladder__step" style="top: 48%"></div>
+      <div class="scroll-ladder__step" style="top: 64%"></div>
+      <div class="scroll-ladder__step" style="top: 80%"></div>
+      <div class="scroll-ladder__step" style="top: 96%"></div>
+      <div class="scroll-ladder__fox" style="top: 0%"></div>
+    </aside>
+
     <header class="site-header" id="top">
       <div class="container site-header__inner">
         <a class="logo" href="#top" aria-label="Студия «Лесенка» — на главную">
@@ -89,7 +101,7 @@
               <a class="btn btn--ghost" href="#directions">Посмотреть направления</a>
             </div>
 
-            <ul class="hero__bullets" role="list">
+            <ul class="hero__bullets stagger-up" role="list">
               <li>10+ направлений</li>
               <li>Опытные педагоги</li>
               <li>Тёплая атмосфера</li>
@@ -161,8 +173,8 @@
             </p>
           </header>
 
-          <ul class="directions__grid" role="list">
-            <li class="direction-card reveal" style="--i:0">
+          <ul class="directions__grid stagger-up reveal" role="list">
+            <li class="direction-card">
               <span class="direction-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><path d="M8 22c0-6 4-10 8-10s8 4 8 10v2H8v-2zM12 9a4 4 0 118 0 4 4 0 01-8 0z" fill="currentColor"/></svg>
               </span>
@@ -170,7 +182,7 @@
               <p>Гончарный круг, ручная лепка, обжиг и&nbsp;роспись готовых работ.</p>
             </li>
 
-            <li class="direction-card reveal" style="--i:1">
+            <li class="direction-card">
               <span class="direction-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><path d="M5 26l5-2 13-13a3 3 0 014 4L14 28l-2 5-7-7zM21 8l3 3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
@@ -178,7 +190,7 @@
               <p>Графика, акварель, гуашь, композиция и&nbsp;цвет в&nbsp;игровом формате.</p>
             </li>
 
-            <li class="direction-card reveal" style="--i:2">
+            <li class="direction-card">
               <span class="direction-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><path d="M16 4c4 4 6 7 6 11a6 6 0 11-12 0c0-4 2-7 6-11zM10 25h12v3H10z" fill="currentColor"/></svg>
               </span>
@@ -186,7 +198,7 @@
               <p>Делаем своих неповторимых героев&nbsp;— от&nbsp;каркаса до&nbsp;костюма.</p>
             </li>
 
-            <li class="direction-card reveal" style="--i:3">
+            <li class="direction-card">
               <span class="direction-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><path d="M6 6h20v4H6zM10 12h12l-2 16h-8z" fill="currentColor"/></svg>
               </span>
@@ -194,7 +206,7 @@
               <p>Этюды, импровизация, постановки спектаклей перед родителями.</p>
             </li>
 
-            <li class="direction-card reveal" style="--i:4">
+            <li class="direction-card">
               <span class="direction-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><path d="M22 4l-10 3v15a4 4 0 11-2-3V8l10-3v3zm-12 22a2 2 0 100-4 2 2 0 000 4z" fill="currentColor"/></svg>
               </span>
@@ -202,7 +214,7 @@
               <p>Ритм, пластика, базовая хореография, знакомство с&nbsp;инструментами.</p>
             </li>
 
-            <li class="direction-card reveal" style="--i:5">
+            <li class="direction-card">
               <span class="direction-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><path d="M16 4a4 4 0 014 4v6a4 4 0 11-8 0V8a4 4 0 014-4zM10 14h2a4 4 0 008 0h2a6 6 0 01-5 5.9V24h3v2H12v-2h3v-4.1A6 6 0 0110 14z" fill="currentColor"/></svg>
               </span>
@@ -210,7 +222,7 @@
               <p>Дыхание, дикция, артикуляция и&nbsp;уверенность на&nbsp;сцене.</p>
             </li>
 
-            <li class="direction-card reveal" style="--i:6">
+            <li class="direction-card">
               <span class="direction-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><path d="M21 4l-2 7-9 3a4 4 0 100 4c0 4 2 6 6 6 5 0 9-4 9-9l-4-11zM10 18a2 2 0 110 4 2 2 0 010-4z" fill="currentColor"/></svg>
               </span>
@@ -218,7 +230,7 @@
               <p>Аккорды, бой, любимые песни&nbsp;— уже на&nbsp;первых занятиях.</p>
             </li>
 
-            <li class="direction-card reveal" style="--i:7">
+            <li class="direction-card">
               <span class="direction-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2" fill="none"/><path d="M5 16h22M16 5c4 5 4 17 0 22M16 5c-4 5-4 17 0 22" stroke="currentColor" stroke-width="2" fill="none"/></svg>
               </span>
@@ -226,7 +238,7 @@
               <p>Природа, опыты, путешествия по&nbsp;странам и&nbsp;эпохам.</p>
             </li>
 
-            <li class="direction-card reveal" style="--i:8">
+            <li class="direction-card">
               <span class="direction-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><path d="M4 10l12-5 12 5-12 5L4 10zm4 4v6c0 2 4 4 8 4s8-2 8-4v-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
               </span>
@@ -234,7 +246,7 @@
               <p>Чтение, счёт, мелкая моторика и&nbsp;умение учиться&nbsp;— без скуки.</p>
             </li>
 
-            <li class="direction-card reveal" style="--i:9">
+            <li class="direction-card">
               <span class="direction-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><path d="M6 12h20l-2 14H8L6 12zM12 12V8a4 4 0 018 0v4" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
               </span>
@@ -253,8 +265,8 @@
             <h2 id="values-title" class="section__title">Почему выбирают «Лесенку»</h2>
           </header>
 
-          <div class="values__grid">
-            <article class="value-card reveal">
+          <div class="values__grid stagger-up reveal">
+            <article class="value-card">
               <div class="value-card__num" aria-hidden="true">01</div>
               <h3>Индивидуальный подход</h3>
               <p>
@@ -264,7 +276,7 @@
               </p>
             </article>
 
-            <article class="value-card reveal reveal--delay-1">
+            <article class="value-card">
               <div class="value-card__num" aria-hidden="true">02</div>
               <h3>Тёплая атмосфера</h3>
               <p>
@@ -273,7 +285,7 @@
               </p>
             </article>
 
-            <article class="value-card reveal reveal--delay-2">
+            <article class="value-card">
               <div class="value-card__num" aria-hidden="true">03</div>
               <h3>Талант&nbsp;— это дар</h3>
               <p>

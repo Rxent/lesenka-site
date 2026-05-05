@@ -62,8 +62,8 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* ---------- Reveal on scroll ---------- */
-  const revealEls = document.querySelectorAll(".reveal");
+  /* ---------- Reveal on scroll («вверх по лесенке») ---------- */
+  const revealEls = document.querySelectorAll(".reveal, .stagger-up");
   if ("IntersectionObserver" in window && revealEls.length) {
     const io = new IntersectionObserver(
       (entries) => {
@@ -79,6 +79,38 @@
     revealEls.forEach((el) => io.observe(el));
   } else {
     revealEls.forEach((el) => el.classList.add("is-visible"));
+  }
+
+  /* ---------- Scroll-ladder: лисёнок поднимается по ступеням ---------- */
+  const ladder = document.querySelector(".scroll-ladder");
+  if (ladder) {
+    const fox = ladder.querySelector(".scroll-ladder__fox");
+    const steps = Array.from(ladder.querySelectorAll(".scroll-ladder__step"));
+    let ticking = false;
+
+    const updateLadder = () => {
+      ticking = false;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docH > 0 ? Math.min(1, Math.max(0, window.scrollY / docH)) : 0;
+      // Лисёнок едет по лесенке от 0% до 96% (последняя ступень)
+      if (fox) fox.style.top = (progress * 96) + "%";
+      // Подсветка пройденных ступеней
+      steps.forEach((step, idx) => {
+        const stepProgress = idx / (steps.length - 1);
+        step.classList.toggle("is-active", progress >= stepProgress - 0.04);
+      });
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateLadder);
+        ticking = true;
+      }
+    };
+
+    updateLadder();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
   }
 
   /* ---------- Phone input mask (light) ---------- */
