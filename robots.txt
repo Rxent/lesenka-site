@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /privacy.html
+
+Sitemap: https://lesenka-landing-rwghpbfs.devinapps.com/sitemap.xml

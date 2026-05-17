@@ -4,23 +4,47 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#F4A24B" />
+
     <meta
       name="description"
-      content="Студия творчества и развития «Лесенка» — лепка, рисование, театр, музыка, подготовка к школе и ранняя профориентация для детей. Шаг за шагом вверх по лесенке роста, вдохновения и радости."
+      content="Студия творчества и развития «Лесенка» — лепка из глины, рисование, театр, музыка, подготовка к школе и ранняя профориентация для детей. Шаг за шагом вверх по лесенке роста, вдохновения и радости."
     />
-    <meta name="keywords" content="детская студия, творчество, развитие, лепка, рисование, театр, танцы, музыка, подготовка к школе, лесенка" />
+    <meta
+      name="keywords"
+      content="детская студия, творчество, развитие, лепка из глины, керамика, изобразительное искусство, авторская кукла, театр, танцы, музыка, гитара, подготовка к школе, профориентация, лесенка"
+    />
     <meta name="author" content="Студия «Лесенка»" />
+    <meta name="format-detection" content="telephone=yes" />
+    <link rel="canonical" href="https://lesenka-landing-rwghpbfs.devinapps.com/" />
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Студия «Лесенка»" />
+    <meta property="og:locale" content="ru_RU" />
     <meta property="og:title" content="Студия творчества и развития «Лесенка»" />
     <meta property="og:description" content="Шаг за шагом вверх по лесенке роста, вдохновения и радости." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/images/lesik-hero.svg" />
+    <meta property="og:image" content="assets/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://lesenka-landing-rwghpbfs.devinapps.com/" />
 
-    <title>Студия творчества и развития «Лесенка»</title>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Студия творчества и развития «Лесенка»" />
+    <meta name="twitter:description" content="Шаг за шагом вверх по лесенке роста, вдохновения и радости." />
+    <meta name="twitter:image" content="assets/images/og-image.jpg" />
 
+    <title>Студия творчества и развития «Лесенка» — детские занятия творчеством</title>
+
+    <!-- Иконки -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
-    <link rel="apple-touch-icon" href="assets/icons/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png" />
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.json" />
 
+    <!-- Шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,11 +52,65 @@
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap"
     />
 
+    <!-- Стили -->
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="preload" as="image" href="assets/images/logo-full.jpg" />
+
+    <!-- JSON-LD schema.org для поисковиков -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://lesenka-landing-rwghpbfs.devinapps.com/#org",
+        "name": "Студия творчества и развития «Лесенка»",
+        "alternateName": "Лесенка",
+        "description": "Детская студия творчества и развития: лепка из глины, рисование, театр, музыка, подготовка к школе и ранняя профориентация.",
+        "url": "https://lesenka-landing-rwghpbfs.devinapps.com/",
+        "image": "https://lesenka-landing-rwghpbfs.devinapps.com/assets/images/og-image.jpg",
+        "logo": "https://lesenka-landing-rwghpbfs.devinapps.com/assets/images/logo-fox.png",
+        "telephone": "+7-000-000-00-00",
+        "priceRange": "₽₽",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "10:00",
+            "closes": "20:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday", "Sunday"],
+            "opens": "10:00",
+            "closes": "18:00"
+          }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "RU",
+          "addressLocality": "г. ____",
+          "streetAddress": "ул. ____, д. __"
+        }
+      }
+    </script>
+
+    <!-- Yandex.Metrika (вставьте свой идентификатор счётчика вместо XXXXXXXX) -->
+    <!--
+    <script>
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      ym(XXXXXXXX, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    -->
   </head>
+
   <body>
     <a class="skip-link" href="#main">Перейти к содержимому</a>
 
+    <!-- Боковая «лесенка»-индикатор скролла -->
     <aside class="scroll-ladder" aria-hidden="true">
       <div class="scroll-ladder__rail"></div>
       <div class="scroll-ladder__step" style="top: 0%"></div>
@@ -48,10 +126,16 @@
     <header class="site-header" id="top">
       <div class="container site-header__inner">
         <a class="logo" href="#top" aria-label="Студия «Лесенка» — на главную">
-          <img src="assets/images/logo-lesik.svg" alt="" class="logo__img" width="48" height="48" />
+          <img
+            src="assets/images/logo-fox.png"
+            alt=""
+            class="logo__img"
+            width="64"
+            height="42"
+          />
           <span class="logo__text">
             <span class="logo__title">Лесенка</span>
-            <span class="logo__sub">студия творчества и развития</span>
+            <span class="logo__sub">студия творчества и&nbsp;развития</span>
           </span>
         </a>
 
@@ -69,10 +153,11 @@
 
         <nav class="primary-nav" id="primary-nav" aria-label="Основное меню">
           <ul class="primary-nav__list">
-            <li><a href="#about">О студии</a></li>
-            <li><a href="#directions">Направления</a></li>
-            <li><a href="#values">Наши ценности</a></li>
-            <li><a class="primary-nav__cta" href="#contact">Записаться</a></li>
+            <li><a href="#about" data-nav-link>О&nbsp;студии</a></li>
+            <li><a href="#directions" data-nav-link>Направления</a></li>
+            <li><a href="#gallery" data-nav-link>Галерея</a></li>
+            <li><a href="#faq" data-nav-link>Вопросы</a></li>
+            <li><a class="primary-nav__cta" href="#contact" data-nav-link>Записаться</a></li>
           </ul>
         </nav>
       </div>
@@ -88,9 +173,9 @@
         </div>
         <div class="container hero__inner">
           <div class="hero__content reveal">
-            <p class="hero__eyebrow">для детей и родителей</p>
+            <p class="hero__eyebrow">для&nbsp;детей и&nbsp;родителей</p>
             <h1 id="hero-title" class="hero__title">
-              Студия творчества и развития
+              Студия творчества и&nbsp;развития
               <span class="hero__title-accent">«Лесенка»</span>
             </h1>
             <p class="hero__subtitle">
@@ -102,7 +187,7 @@
             </div>
 
             <ul class="hero__bullets stagger-up" role="list">
-              <li>10+ направлений</li>
+              <li>10&nbsp;направлений</li>
               <li>Опытные педагоги</li>
               <li>Тёплая атмосфера</li>
             </ul>
@@ -110,12 +195,13 @@
 
           <figure class="hero__art reveal reveal--delay-1">
             <img
-              src="assets/images/lesik-hero.svg"
-              alt="Дружелюбный лисёнок Лесик с книгой стоит у лесенки"
+              src="assets/images/logo-full.jpg"
+              alt="Логотип Студии «Лесенка»: лисёнок Лесик с палитрой поднимается по разноцветной лесенке"
               class="hero__img"
-              width="480"
-              height="480"
+              width="640"
+              height="378"
               loading="eager"
+              fetchpriority="high"
             />
           </figure>
         </div>
@@ -159,13 +245,37 @@
         </div>
       </section>
 
+      <!-- ============== STATS COUNTERS ============== -->
+      <section class="section section--tight stats" aria-label="Студия в цифрах">
+        <div class="container">
+          <ul class="stats__grid stagger-up reveal" role="list">
+            <li class="stats__item">
+              <span class="stats__num" data-counter="10" data-suffix="">0</span>
+              <span class="stats__label">направлений</span>
+            </li>
+            <li class="stats__item">
+              <span class="stats__num" data-counter="500" data-suffix="+">0</span>
+              <span class="stats__label">детей прошли занятия</span>
+            </li>
+            <li class="stats__item">
+              <span class="stats__num" data-counter="5" data-suffix="+">0</span>
+              <span class="stats__label">лет опыта</span>
+            </li>
+            <li class="stats__item">
+              <span class="stats__num" data-counter="100" data-suffix="%">0</span>
+              <span class="stats__label">тепла и&nbsp;поддержки</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <!-- ============== DIRECTIONS ============== -->
       <section class="section directions" id="directions" aria-labelledby="directions-title">
         <div class="container">
           <header class="section__header reveal">
             <p class="section__eyebrow">направления занятий</p>
             <h2 id="directions-title" class="section__title">
-              Любимое дело найдётся для каждого
+              Любимое дело найдётся для&nbsp;каждого
             </h2>
             <p class="section__lead">
               Десять направлений&nbsp;— от&nbsp;творчества до&nbsp;ранней
@@ -178,7 +288,7 @@
               <span class="direction-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32"><path d="M8 22c0-6 4-10 8-10s8 4 8 10v2H8v-2zM12 9a4 4 0 118 0 4 4 0 01-8 0z" fill="currentColor"/></svg>
               </span>
-              <h3>Лепка из глины и&nbsp;керамика</h3>
+              <h3>Лепка из&nbsp;глины и&nbsp;керамика</h3>
               <p>Гончарный круг, ручная лепка, обжиг и&nbsp;роспись готовых работ.</p>
             </li>
 
@@ -257,7 +367,7 @@
         </div>
       </section>
 
-      <!-- ============== VALUES / ADVANTAGES ============== -->
+      <!-- ============== VALUES ============== -->
       <section class="section values" id="values" aria-labelledby="values-title">
         <div class="container">
           <header class="section__header reveal">
@@ -297,6 +407,124 @@
         </div>
       </section>
 
+      <!-- ============== GALLERY ============== -->
+      <section class="section gallery" id="gallery" aria-labelledby="gallery-title">
+        <div class="container">
+          <header class="section__header reveal">
+            <p class="section__eyebrow">галерея</p>
+            <h2 id="gallery-title" class="section__title">Так выглядят наши занятия</h2>
+            <p class="section__lead">
+              Лепка, керамика, рисование, авторская кукла, поделки&nbsp;—
+              кадры с&nbsp;настоящих занятий. Кликните по&nbsp;любой фотографии,
+              чтобы увеличить.
+            </p>
+          </header>
+
+          <ul class="gallery__grid stagger-up reveal" role="list">
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-01.jpg" aria-label="Открыть фото 1"><img src="assets/images/gallery/gallery-01-thumb.jpg" alt="Мальчик с глиняной поделкой показывает испачканную глиной ладошку" loading="lazy" width="450" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-02.jpg" aria-label="Открыть фото 2"><img src="assets/images/gallery/gallery-02-thumb.jpg" alt="Мальчик лепит фигурку из серой глины за столом" loading="lazy" width="450" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-03.jpg" aria-label="Открыть фото 3"><img src="assets/images/gallery/gallery-03-thumb.jpg" alt="Дети сосредоточенно лепят из глины за длинным столом" loading="lazy" width="450" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-04.jpg" aria-label="Открыть фото 4"><img src="assets/images/gallery/gallery-04-thumb.jpg" alt="Девочка в школьной форме держит вылепленные из глины поделки" loading="lazy" width="600" height="450" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-05.jpg" aria-label="Открыть фото 5"><img src="assets/images/gallery/gallery-05-thumb.jpg" alt="Педагог помогает ребёнку лепить из глины на занятии" loading="lazy" width="399" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-06.jpg" aria-label="Открыть фото 6"><img src="assets/images/gallery/gallery-06-thumb.jpg" alt="Ребёнок занят лепкой за столом" loading="lazy" width="450" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-07.jpg" aria-label="Открыть фото 7"><img src="assets/images/gallery/gallery-07-thumb.jpg" alt="Детские руки разминают пластичную белую массу" loading="lazy" width="337" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-08.jpg" aria-label="Открыть фото 8"><img src="assets/images/gallery/gallery-08-thumb.jpg" alt="Ребёнок расписывает гуашью фигурку рыбы" loading="lazy" width="337" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-09.jpg" aria-label="Открыть фото 9"><img src="assets/images/gallery/gallery-09-thumb.jpg" alt="Мальчик расписывает белую фигурку с бабочками акварелью" loading="lazy" width="337" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-10.jpg" aria-label="Открыть фото 10"><img src="assets/images/gallery/gallery-10-thumb.jpg" alt="Ребёнок дорисовывает кистью лепную фигурку снегиря" loading="lazy" width="337" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-11.jpg" aria-label="Открыть фото 11"><img src="assets/images/gallery/gallery-11-thumb.jpg" alt="Готовая раскрашенная фигурка снегиря на веточке" loading="lazy" width="337" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-12.jpg" aria-label="Открыть фото 12"><img src="assets/images/gallery/gallery-12-thumb.jpg" alt="Ребёнок расписывает ветку для композиции со снегирём" loading="lazy" width="363" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-13.jpg" aria-label="Открыть фото 13"><img src="assets/images/gallery/gallery-13-thumb.jpg" alt="Детские руки собирают композицию из глиняной заготовки и веток" loading="lazy" width="337" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-14.jpg" aria-label="Открыть фото 14"><img src="assets/images/gallery/gallery-14-thumb.jpg" alt="Девочка-подросток рисует акварельный портрет на занятии" loading="lazy" width="524" height="600" /></button></li>
+            <li><button type="button" class="gallery__item" data-full="assets/images/gallery/gallery-15.jpg" aria-label="Открыть фото 15"><img src="assets/images/gallery/gallery-15-thumb.jpg" alt="Картонный домик-поделка с зелёной травой и крыльцом, выполненный детьми" loading="lazy" width="337" height="600" /></button></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============== FAQ ============== -->
+      <section class="section faq" id="faq" aria-labelledby="faq-title">
+        <div class="container faq__inner">
+          <header class="section__header reveal">
+            <p class="section__eyebrow">частые вопросы</p>
+            <h2 id="faq-title" class="section__title">Спрашивают родители</h2>
+          </header>
+
+          <div class="faq__list stagger-up reveal">
+            <details class="faq__item">
+              <summary>
+                <span>С какого возраста можно заниматься?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </summary>
+              <p>
+                Мы&nbsp;принимаем детей с&nbsp;3&nbsp;лет&nbsp;— на&nbsp;адаптационные
+                занятия с&nbsp;родителями. С&nbsp;5&nbsp;лет&nbsp;— на&nbsp;самостоятельные
+                группы. Подростки тоже занимаются: для них есть отдельные программы.
+              </p>
+            </details>
+
+            <details class="faq__item">
+              <summary>
+                <span>Можно ли прийти на&nbsp;пробное занятие?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </summary>
+              <p>
+                Да, мы&nbsp;всегда рады знакомству. Запишитесь через форму
+                на&nbsp;этой странице или позвоните администратору&nbsp;—
+                подберём удобное время и&nbsp;направление.
+              </p>
+            </details>
+
+            <details class="faq__item">
+              <summary>
+                <span>Нужно ли приносить свои материалы?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </summary>
+              <p>
+                Нет, все материалы&nbsp;— глину, краски, кисти, бумагу, фурнитуру
+                для куклы&nbsp;— мы&nbsp;предоставляем. Готовые работы дети
+                забирают&nbsp;домой.
+              </p>
+            </details>
+
+            <details class="faq__item">
+              <summary>
+                <span>Что, если ребёнок не&nbsp;знает, что выбрать?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </summary>
+              <p>
+                Это нормально&nbsp;— и&nbsp;для этого «Лесенка» существует.
+                На&nbsp;первой встрече педагоги предлагают попробовать несколько
+                направлений: лепку, рисование, театр, музыку. Через 1–2&nbsp;недели
+                ребёнок сам понимает, к&nbsp;чему тянется.
+              </p>
+            </details>
+
+            <details class="faq__item">
+              <summary>
+                <span>Можно ли пропустить занятие?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </summary>
+              <p>
+                Конечно. Достаточно предупредить администратора&nbsp;—
+                пропущенное занятие можно отработать с&nbsp;другой группой
+                по&nbsp;тому&nbsp;же направлению.
+              </p>
+            </details>
+
+            <details class="faq__item">
+              <summary>
+                <span>Сколько детей в&nbsp;группе?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </summary>
+              <p>
+                В&nbsp;среднем 6–8 детей&nbsp;— этого достаточно
+                для общения и&nbsp;команды, но&nbsp;при этом каждому
+                ребёнку хватает внимания педагога.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <!-- ============== CONTACT ============== -->
       <section class="section contact" id="contact" aria-labelledby="contact-title">
         <div class="container contact__grid">
@@ -319,11 +547,15 @@
                 <strong>Телефон:</strong>
                 <a class="contact__phone" href="tel:+70000000000">
                   <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A17 17 0 013 6a2 2 0 012-2z" fill="currentColor"/></svg>
-                  +7 (000) 000-00-00
+                  +7&nbsp;(000)&nbsp;000-00-00
                 </a>
               </li>
+              <li>
+                <strong>Режим работы:</strong>
+                <span>пн–пт 10:00–20:00, сб–вс 10:00–18:00</span>
+              </li>
               <li class="contact__socials">
-                <strong>Мы в&nbsp;соцсетях:</strong>
+                <strong>Мы&nbsp;в&nbsp;соцсетях:</strong>
                 <span class="contact__social-links">
                   <a href="#" aria-label="ВКонтакте">VK</a>
                   <a href="#" aria-label="Telegram">TG</a>
@@ -365,7 +597,8 @@
             <div class="field field--checkbox">
               <input type="checkbox" id="consent" name="consent" required checked />
               <label for="consent">
-                Согласен(на) с&nbsp;обработкой персональных данных
+                Согласен(на) с&nbsp;обработкой персональных данных в&nbsp;соответствии
+                с&nbsp;<a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>
               </label>
             </div>
 
@@ -379,20 +612,85 @@
           </form>
         </div>
       </section>
+
+      <!-- ============== MAP / HOW TO FIND US ============== -->
+      <section class="section section--alt findus" id="findus" aria-labelledby="findus-title">
+        <div class="container findus__grid">
+          <header class="findus__header reveal">
+            <p class="section__eyebrow">как нас найти</p>
+            <h2 id="findus-title" class="section__title">Заглядывайте в&nbsp;гости</h2>
+            <p class="section__lead">
+              Уютная студия в&nbsp;нескольких минутах от&nbsp;центра.
+              Запишитесь заранее&nbsp;— и&nbsp;администратор встретит
+              ребёнка прямо у&nbsp;входа.
+            </p>
+            <ul class="findus__info" role="list">
+              <li><strong>Адрес:</strong> г.&nbsp;____, ул.&nbsp;____, д.&nbsp;__</li>
+              <li><strong>Время работы:</strong> пн–пт 10:00–20:00, сб–вс 10:00–18:00</li>
+              <li><strong>Парковка:</strong> бесплатная во&nbsp;дворе</li>
+            </ul>
+            <a class="btn btn--ghost" href="#contact">Записаться на&nbsp;занятие</a>
+          </header>
+
+          <div class="findus__map reveal reveal--delay-1" aria-label="Карта расположения студии">
+            <!-- Плейсхолдер карты. Вставьте сюда iframe Яндекс.Карт или Google Maps,
+                 когда уточните точный адрес. Пример:
+                 <iframe src="https://yandex.ru/map-widget/v1/?..." width="100%" height="380" frameborder="0"></iframe>
+            -->
+            <div class="findus__map-placeholder" aria-hidden="true">
+              <svg viewBox="0 0 64 64" width="64" height="64">
+                <path d="M32 4a16 16 0 0116 16c0 11-16 40-16 40S16 31 16 20A16 16 0 0132 4zm0 22a6 6 0 100-12 6 6 0 000 12z" fill="currentColor"/>
+              </svg>
+              <p>Здесь будет карта.<br>Подставим, как только уточним адрес студии.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
       <div class="container site-footer__inner">
         <div class="site-footer__brand">
-          <img src="assets/images/logo-lesik.svg" alt="" width="36" height="36" />
+          <img src="assets/images/logo-fox.png" alt="" width="48" height="32" />
           <span>Студия творчества и&nbsp;развития «Лесенка»</span>
         </div>
+        <nav class="site-footer__links" aria-label="Дополнительные ссылки">
+          <a href="#about">О&nbsp;студии</a>
+          <a href="#directions">Направления</a>
+          <a href="#gallery">Галерея</a>
+          <a href="#faq">Вопросы</a>
+          <a href="privacy.html">Политика конфиденциальности</a>
+        </nav>
         <p class="site-footer__copy">
-          © <span id="year">2026</span> Студия «Лесенка». Все права защищены.
+          © <span id="year">2026</span> Студия «Лесенка». Все&nbsp;права защищены.
         </p>
-        <a class="site-footer__top" href="#top" aria-label="Наверх">↑ наверх</a>
+        <a class="site-footer__top" href="#top" aria-label="Наверх">↑&nbsp;наверх</a>
       </div>
     </footer>
+
+    <!-- ============== FLOATING CONTACT BUTTONS (mobile-first) ============== -->
+    <div class="fab" aria-label="Быстрая связь">
+      <a class="fab__btn fab__btn--call" href="tel:+70000000000" aria-label="Позвонить">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A17 17 0 013 6a2 2 0 012-2z" fill="currentColor"/></svg>
+      </a>
+      <a class="fab__btn fab__btn--tg" href="https://t.me/" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4.4L2.5 11.5c-1 .4-1 1.7.1 2L7.5 15l1.7 5.5c.3.9 1.4 1.1 2 .3l2.6-2.6 4.6 3.4c.8.6 2 .2 2.2-.8l3-15c.2-1.2-1-2.2-2.6-1.4zM10 14.4l8-7.3-6.5 8.2-.4 3.7-1.1-4.6z" fill="currentColor"/></svg>
+      </a>
+      <a class="fab__btn fab__btn--wa" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20zm4.4-5.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.7.9-.1.1-.2.2-.5.1-.2-.1-1-.4-2-1.3-.7-.7-1.2-1.5-1.4-1.7-.1-.2 0-.4.1-.5.1-.1.3-.3.4-.5.1-.1.2-.2.2-.4 0-.2 0-.4-.1-.5L9 7.5c-.1-.2-.3-.2-.5-.2h-.4c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2 0 1.3 1 2.6 1.1 2.7.1.2 2 3 4.7 4.1.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.2-.2-.4-.2z" fill="currentColor"/></svg>
+      </a>
+    </div>
+
+    <!-- ============== LIGHTBOX ============== -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" hidden>
+      <button class="lightbox__close" type="button" aria-label="Закрыть">×</button>
+      <button class="lightbox__prev" type="button" aria-label="Предыдущая">‹</button>
+      <button class="lightbox__next" type="button" aria-label="Следующая">›</button>
+      <figure class="lightbox__figure">
+        <img class="lightbox__img" alt="" />
+        <figcaption class="lightbox__caption" aria-live="polite"></figcaption>
+      </figure>
+    </div>
 
     <script src="js/main.js" defer></script>
   </body>

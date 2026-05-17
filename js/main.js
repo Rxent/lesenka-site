@@ -1,10 +1,14 @@
 /* Студия «Лесенка» — interactive bits
+ * - Year in footer
  * - Mobile menu toggle
  * - Sticky header shadow on scroll
- * - IntersectionObserver-based fade-in for `.reveal`
- * - Form validation with inline errors and success state
+ * - IntersectionObserver-based reveal animations
+ * - Scroll-ladder indicator (лисёнок поднимается по ступеням)
  * - Phone input mask
- * - Year in footer
+ * - Form validation (form-stub, no real submit)
+ * - Counter animations for stats
+ * - Active nav section highlighting on scroll
+ * - Photo gallery lightbox with keyboard navigation
  */
 (function () {
   "use strict";
@@ -38,8 +42,7 @@
     });
 
     primaryNav.addEventListener("click", (e) => {
-      const target = e.target;
-      if (target instanceof HTMLAnchorElement) closeMenu();
+      if (e.target instanceof HTMLAnchorElement) closeMenu();
     });
 
     document.addEventListener("keydown", (e) => {
@@ -62,7 +65,7 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* ---------- Reveal on scroll («вверх по лесенке») ---------- */
+  /* ---------- Reveal on scroll ---------- */
   const revealEls = document.querySelectorAll(".reveal, .stagger-up");
   if ("IntersectionObserver" in window && revealEls.length) {
     const io = new IntersectionObserver(
@@ -81,7 +84,7 @@
     revealEls.forEach((el) => el.classList.add("is-visible"));
   }
 
-  /* ---------- Scroll-ladder: лисёнок поднимается по ступеням ---------- */
+  /* ---------- Scroll-ladder ---------- */
   const ladder = document.querySelector(".scroll-ladder");
   if (ladder) {
     const fox = ladder.querySelector(".scroll-ladder__fox");
@@ -92,9 +95,7 @@
       ticking = false;
       const docH = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docH > 0 ? Math.min(1, Math.max(0, window.scrollY / docH)) : 0;
-      // Лисёнок едет по лесенке от 0% до 96% (последняя ступень)
-      if (fox) fox.style.top = (progress * 96) + "%";
-      // Подсветка пройденных ступеней
+      if (fox) fox.style.top = progress * 96 + "%";
       steps.forEach((step, idx) => {
         const stepProgress = idx / (steps.length - 1);
         step.classList.toggle("is-active", progress >= stepProgress - 0.04);
@@ -113,15 +114,13 @@
     window.addEventListener("resize", onScroll, { passive: true });
   }
 
-  /* ---------- Phone input mask (light) ---------- */
+  /* ---------- Phone input mask ---------- */
   const phoneInput = document.getElementById("parent-phone");
   if (phoneInput) {
     phoneInput.addEventListener("input", () => {
       const digits = phoneInput.value.replace(/\D/g, "").slice(0, 11);
       let formatted = "";
-      if (digits.length === 0) {
-        formatted = "";
-      } else {
+      if (digits.length > 0) {
         const d = digits.startsWith("8") ? "7" + digits.slice(1) : digits;
         formatted = "+7";
         if (d.length > 1) formatted += " (" + d.slice(1, 4);
@@ -137,9 +136,7 @@
   const form = document.getElementById("contact-form");
   if (form) {
     const setError = (input, message) => {
-      const errEl = form.querySelector(
-        '[data-error-for="' + input.id + '"]'
-      );
+      const errEl = form.querySelector('[data-error-for="' + input.id + '"]');
       if (errEl) errEl.textContent = message || "";
       input.setAttribute("aria-invalid", message ? "true" : "false");
     };
@@ -182,9 +179,9 @@
 
       const success = form.querySelector(".contact__form-success");
       if (success) success.hidden = false;
-      form
-        .querySelectorAll("input, button[type=submit]")
-        .forEach((el) => (el.disabled = true));
+      form.querySelectorAll("input, button[type=submit]").forEach((el) => {
+        el.disabled = true;
+      });
     });
 
     ["parent-name", "parent-phone"].forEach((id) => {
@@ -193,5 +190,152 @@
         el.addEventListener("input", () => setError(el, ""));
       }
     });
+  }
+
+  /* ---------- Counter animations ---------- */
+  const counters = document.querySelectorAll("[data-counter]");
+  if (counters.length && "IntersectionObserver" in window) {
+    const animate = (el) => {
+      const target = parseInt(el.dataset.counter || "0", 10);
+      const suffix = el.dataset.suffix || "";
+      const duration = 1400;
+      const start = performance.now();
+      const step = (now) => {
+        const t = Math.min(1, (now - start) / duration);
+        // easeOutCubic
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const counterObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animate(entry.target);
+            counterObs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    counters.forEach((c) => counterObs.observe(c));
+  } else {
+    counters.forEach((el) => {
+      el.textContent = (el.dataset.counter || "0") + (el.dataset.suffix || "");
+    });
+  }
+
+  /* ---------- Active nav section highlighting ---------- */
+  const navLinks = Array.from(document.querySelectorAll("[data-nav-link]"));
+  const sectionMap = new Map();
+  navLinks.forEach((a) => {
+    const id = a.getAttribute("href");
+    if (id && id.startsWith("#")) {
+      const sec = document.querySelector(id);
+      if (sec) sectionMap.set(sec, a);
+    }
+  });
+
+  if (sectionMap.size && "IntersectionObserver" in window) {
+    const sectionObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const link = sectionMap.get(entry.target);
+          if (!link) return;
+          if (entry.isIntersecting) {
+            navLinks.forEach((l) => l.classList.remove("is-active"));
+            link.classList.add("is-active");
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+    );
+    sectionMap.forEach((_link, sec) => sectionObs.observe(sec));
+  }
+
+  /* ---------- Gallery lightbox ---------- */
+  const lightbox = document.getElementById("lightbox");
+  const galleryItems = Array.from(document.querySelectorAll(".gallery__item"));
+
+  if (lightbox && galleryItems.length) {
+    const imgEl = lightbox.querySelector(".lightbox__img");
+    const captionEl = lightbox.querySelector(".lightbox__caption");
+    const btnClose = lightbox.querySelector(".lightbox__close");
+    const btnPrev = lightbox.querySelector(".lightbox__prev");
+    const btnNext = lightbox.querySelector(".lightbox__next");
+    let currentIdx = -1;
+    let lastFocused = null;
+
+    const sources = galleryItems.map((b, i) => ({
+      full: b.dataset.full || "",
+      alt: b.querySelector("img")?.alt || "",
+      index: i,
+    }));
+
+    const open = (idx) => {
+      const item = sources[idx];
+      if (!item) return;
+      currentIdx = idx;
+      imgEl.src = item.full;
+      imgEl.alt = item.alt;
+      captionEl.textContent = `${idx + 1} / ${sources.length} · ${item.alt}`;
+      lightbox.hidden = false;
+      document.body.style.overflow = "hidden";
+      lastFocused = document.activeElement;
+      btnClose.focus({ preventScroll: true });
+    };
+
+    const close = () => {
+      lightbox.hidden = true;
+      imgEl.src = "";
+      document.body.style.overflow = "";
+      currentIdx = -1;
+      if (lastFocused && lastFocused.focus) lastFocused.focus({ preventScroll: true });
+    };
+
+    const go = (delta) => {
+      if (currentIdx < 0) return;
+      const next = (currentIdx + delta + sources.length) % sources.length;
+      open(next);
+    };
+
+    galleryItems.forEach((btn, idx) => {
+      btn.addEventListener("click", () => open(idx));
+    });
+    btnClose.addEventListener("click", close);
+    btnPrev.addEventListener("click", () => go(-1));
+    btnNext.addEventListener("click", () => go(1));
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) close();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (lightbox.hidden) return;
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") go(-1);
+      if (e.key === "ArrowRight") go(1);
+    });
+
+    // Простой свайп для тач-устройств
+    let touchStartX = 0;
+    lightbox.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.changedTouches[0].clientX;
+      },
+      { passive: true }
+    );
+    lightbox.addEventListener(
+      "touchend",
+      (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 50) go(dx > 0 ? -1 : 1);
+      },
+      { passive: true }
+    );
   }
 })();
