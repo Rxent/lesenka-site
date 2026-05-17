@@ -6,8 +6,8 @@
  * - Scroll-ladder indicator (лисёнок поднимается по ступеням)
  * - Phone input mask
  * - Form validation (form-stub, no real submit)
- * - Counter animations for stats
  * - Active nav section highlighting on scroll
+ * - Photo gallery carousel (слайдер) with prev/next и dots
  * - Photo gallery lightbox with keyboard navigation
  */
 (function () {
@@ -192,40 +192,100 @@
     });
   }
 
-  /* ---------- Counter animations ---------- */
-  const counters = document.querySelectorAll("[data-counter]");
-  if (counters.length && "IntersectionObserver" in window) {
-    const animate = (el) => {
-      const target = parseInt(el.dataset.counter || "0", 10);
-      const suffix = el.dataset.suffix || "";
-      const duration = 1400;
-      const start = performance.now();
-      const step = (now) => {
-        const t = Math.min(1, (now - start) / duration);
-        // easeOutCubic
-        const eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = Math.round(target * eased) + suffix;
-        if (t < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
+  /* ---------- Gallery carousel ---------- */
+  const carousel = document.querySelector(".carousel");
+  if (carousel) {
+    const track = carousel.querySelector(".carousel__track");
+    const slides = Array.from(carousel.querySelectorAll(".carousel__slide"));
+    const btnPrev = carousel.querySelector(".carousel__arrow--prev");
+    const btnNext = carousel.querySelector(".carousel__arrow--next");
+    const dotsHost = carousel.querySelector(".carousel__dots");
+    let index = 0;
+
+    const perView = () => {
+      if (window.matchMedia("(min-width: 900px)").matches) return 3;
+      if (window.matchMedia("(min-width: 600px)").matches) return 2;
+      return 1;
     };
 
-    const counterObs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animate(entry.target);
-            counterObs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-    counters.forEach((c) => counterObs.observe(c));
-  } else {
-    counters.forEach((el) => {
-      el.textContent = (el.dataset.counter || "0") + (el.dataset.suffix || "");
+    const maxIndex = () => Math.max(0, slides.length - perView());
+
+    if (dotsHost) {
+      dotsHost.innerHTML = "";
+      slides.forEach((_s, i) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "carousel__dot";
+        dot.setAttribute("role", "tab");
+        dot.setAttribute("aria-label", `Перейти к фото ${i + 1}`);
+        dot.addEventListener("click", () => goTo(i));
+        dotsHost.appendChild(dot);
+      });
+    }
+    const dots = dotsHost ? Array.from(dotsHost.children) : [];
+
+    const update = () => {
+      const slide = slides[0];
+      if (!slide || !track) return;
+      const rect = slide.getBoundingClientRect();
+      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || "0");
+      const step = rect.width + gap;
+      track.style.transform = `translateX(${-index * step}px)`;
+
+      if (btnPrev) btnPrev.disabled = index <= 0;
+      if (btnNext) btnNext.disabled = index >= maxIndex();
+
+      dots.forEach((d, i) => {
+        d.classList.toggle("is-active", i === index);
+        d.setAttribute("aria-selected", i === index ? "true" : "false");
+      });
+    };
+
+    const goTo = (i) => {
+      index = Math.min(maxIndex(), Math.max(0, i));
+      update();
+    };
+
+    if (btnPrev) btnPrev.addEventListener("click", () => goTo(index - 1));
+    if (btnNext) btnNext.addEventListener("click", () => goTo(index + 1));
+
+    carousel.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") { goTo(index - 1); e.preventDefault(); }
+      if (e.key === "ArrowRight") { goTo(index + 1); e.preventDefault(); }
     });
+
+    // Touch swipe
+    let touchStartX = 0;
+    let touchDeltaX = 0;
+    carousel.addEventListener(
+      "touchstart",
+      (e) => { touchStartX = e.changedTouches[0].clientX; touchDeltaX = 0; },
+      { passive: true }
+    );
+    carousel.addEventListener(
+      "touchmove",
+      (e) => { touchDeltaX = e.changedTouches[0].clientX - touchStartX; },
+      { passive: true }
+    );
+    carousel.addEventListener(
+      "touchend",
+      () => {
+        if (Math.abs(touchDeltaX) > 40) goTo(index + (touchDeltaX < 0 ? 1 : -1));
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("resize", () => {
+      goTo(Math.min(index, maxIndex()));
+    });
+
+    // Обновляем после загрузки картинок, чтобы верно взять размеры
+    if (document.readyState === "complete") {
+      update();
+    } else {
+      window.addEventListener("load", update, { once: true });
+      update();
+    }
   }
 
   /* ---------- Active nav section highlighting ---------- */
